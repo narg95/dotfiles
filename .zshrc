@@ -63,3 +63,6 @@ alias -s html="$BROWSER"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias configsync='function _sync_dotfile(){config add $1;config commit -m "add $1";config push;};_sync_dotfile'
 
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
