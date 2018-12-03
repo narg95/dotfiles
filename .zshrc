@@ -27,6 +27,11 @@ DEFAULT_USER=`whoami`
 autoload -U promptinit; promptinit
 prompt pure
 
+export KUBE_PS1_SYMBOL_USE_IM=Gtrue
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
+
+
 # Aliases
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
@@ -65,3 +70,4 @@ alias configsync='function _sync_dotfile(){config add $1;config commit -m "add $
 function chpwd () { ls } 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
