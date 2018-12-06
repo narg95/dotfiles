@@ -33,15 +33,20 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 
 
 # Aliases
+
+## Applications
+alias k=clear
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias mif=mediainfo
+
 alias cc="code -r"
 alias vzh="vi ~/.zshrc"
 alias k9='kill -9'
 alias p=' ps aux | grep'
 alias gs='git status -s'
+alias gdh='git diff HEAD'
 alias g='git'
 alias b='brew'
 alias cd=' cd'
