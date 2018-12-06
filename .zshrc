@@ -35,7 +35,7 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 # Aliases
 
 ## Applications
-alias k=clear
+alias kk=clear
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
