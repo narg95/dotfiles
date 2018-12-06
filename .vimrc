@@ -3,7 +3,9 @@ set number
 set nocompatible              " be iMproved, required
 set mouse=a " To scroll and clic with mose. Note that selecting only in visual mode
 set clipboard=unnamed " To copy to clipboard using +y
-
+set hlsearch "highlight search
+set ignorecase
+set incsearch
 
 filetype off                  " required
 set ft=javascript
@@ -30,6 +32,20 @@ Plugin 'ervandew/supertab' " allow autocompletion
 call vundle#end()            " required
 filetype plugin indent on    " required
 colorscheme gruvbox " Colorscheme for gruvbox
+setlocal iskeyword+=- " set minus as keyword
+" Press Space to turn off highlighting and clear any message already displayed.
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+" Highlight current word with F8
+:nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+set guioptions+=a
+function! MakePattern(text)
+  let pat = escape(a:text, '\')
+  let pat = substitute(pat, '\_s\+$', '\\s\\*', '')
+  let pat = substitute(pat, '^\_s\+', '\\s\\*', '')
+  let pat = substitute(pat, '\_s\+',  '\\_s\\+', 'g')
+  return '\\V' . escape(pat, '\"')
+endfunction
+vnoremap <silent> <F8> :<C-U>let @/="<C-R>=MakePattern(@*)<CR>"<CR>:set hls<CR>
 
 " Resize windows
 if bufwinnr(1)
@@ -46,9 +62,17 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" search selected word
-vnoremap // y/<C-R>"<CR>
-
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 map <C-o> :NERDTreeToggle<CR>
 map <C-b> :CtrlPBuffer<CR>
