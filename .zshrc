@@ -36,6 +36,7 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 
 ## Applications
 alias kk=clear
+alias kpx="k proxy" "kubectl proxy
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
@@ -73,6 +74,6 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias configsync='function _sync_dotfile(){config add $1;config commit -m "add $1";config push;};_sync_dotfile'
 
 function chpwd () { ls } 
-
+function kpc() {kubectl get pods $1 -o jsonpath='{.spec.containers[*].name}'}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
