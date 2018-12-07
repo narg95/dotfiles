@@ -37,6 +37,8 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 ## Applications
 alias kk=clear
 alias kpx="k proxy" #kubectl proxy
+alias wk='watch "kubectl get pods,services,configmaps; kubectl top pod --containers"'
+alias wkw='watch "kubectl get --output=wide pods,services,configmaps; kubectl top pod --containers"'
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
