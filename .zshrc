@@ -3,7 +3,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
 
 plugins=(
-  git zsh-autosuggestions dirhistory brew vagrant dircycle fasd httpie vscode web-search urltools Kubectl
+  git zsh-autosuggestions dirhistory brew vagrant dircycle fasd httpie vscode web-search urltools Kubectl docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -35,7 +35,9 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 # Aliases
 
 ## Applications
+alias dk="docker"
 alias kk=clear
+alias kns="kubens"
 alias kpx="k proxy" #kubectl proxy
 alias wk='watch "kubectl get pods,services,configmaps; kubectl top pod --containers"'
 alias wkw='watch "kubectl get --output=wide pods,services,configmaps; kubectl top pod --containers"'
