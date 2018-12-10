@@ -36,6 +36,8 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 
 ## Applications
 alias dk="docker"
+alias dki="docker images"
+alias dkig="docker images | grep "
 alias kk=clear
 alias kns="kubens"
 alias kpx="k proxy" #kubectl proxy
