@@ -11,6 +11,7 @@
         d = diff # show changes in the working directory (not including index)
         amend= commit --amend# fix last commit
 	unstage = reset --
+	srv = daemon --base-path=. --export-all --reuseaddr --informative-errors --verbose
 [user]
 	name = Nestor
 	email = nestor.rodriguez@ses.com
