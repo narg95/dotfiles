@@ -47,7 +47,7 @@ alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias mif=mediainfo
-
+alias kz="kustomize"
 alias cc="code -r"
 alias vzh="vi ~/.zshrc"
 alias k9='kill -9'
@@ -62,6 +62,7 @@ alias ....=' cd ..; cd ..; cd ..; ls'
 alias cd..='..'
 alias cd...='...'
 alias cd....='....'
+alias -g Gc='| grepc' 
 alias -g G='| grep '
 alias -g P='2>&1 | $PAGER'
 alias -g L='| less'
@@ -80,6 +81,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias configsync='function _sync_dotfile(){config add $1;config commit -m "add $1";config push;};_sync_dotfile'
 
 function chpwd () { ls } 
+function grepc () { grep --color -e $1 -e "$" } 
 function kpc() {kubectl get pods $1 -o jsonpath='{.spec.containers[*].name}'}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source <(stern --completion=zsh)
