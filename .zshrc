@@ -27,7 +27,7 @@ DEFAULT_USER=`whoami`
 autoload -U promptinit; promptinit
 prompt pure
 
-export KUBE_PS1_SYMBOL_USE_IM=Gtrue
+export KUBE_PS1_LABEL_USE_IMG=true
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 
@@ -40,9 +40,12 @@ alias dki="docker images"
 alias dkig="docker images | grep "
 alias kk=clear
 alias kns="kubens"
+alias kcx="kubectx"
+alias aca="argocd app"
+alias ac="argocd"
 alias kpx="k proxy" #kubectl proxy
-alias wk='watch "kubectl get pods,services,configmaps; kubectl top pod --containers"'
-alias wkw='watch "kubectl get --output=wide pods,services,configmaps; kubectl top pod --containers"'
+alias wk='watch "kubectl get pods,services,configmaps,secrets; kubectl top pod --containers"'
+alias wkw='watch "kubectl get --output=wide pods,services,configmaps,secrets; kubectl top pod --containers"'
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
@@ -81,8 +84,15 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias configsync='function _sync_dotfile(){config add $1;config commit -m "add $1";config push;};_sync_dotfile'
 
 function chpwd () { ls } 
-function grepc () { grep --color -e $1 -e "$" } 
+function grepc () { grep --color=always -e $1 -e "$" } 
 function kpc() {kubectl get pods $1 -o jsonpath='{.spec.containers[*].name}'}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source <(stern --completion=zsh)
+ssh-add -K ~/.ssh/id_rsa
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/nestor/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nestor/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/nestor/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nestor/google-cloud-sdk/completion.zsh.inc'; fi
