@@ -6,10 +6,11 @@ set clipboard=unnamed " To copy to clipboard using +y
 set hlsearch "highlight search
 set ignorecase
 set incsearch
+set switchbuf=useopen
 
 filetype off                  " required
 set ft=javascript
-let mapleader="Caps_Lock"
+let mapleader=','
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -27,12 +28,23 @@ Plugin 'tpope/vim-surround' " Surround selected text with the given letter
 Plugin 'scrooloose/nerdtree' " Tree Navigation
 Plugin 'eugen0329/vim-esearch' " Search file and directories
 Plugin 'ervandew/supertab' " allow autocompletion
+Plugin 'prettier/vim-prettier' " formatting
+Plugin 'mattn/emmet-vim' " emmet plugin  emmet plugin
+Plugin 'w0rp/ale' " linting
+
+let b:ale_fixers = ['prettier', 'importjs', 'remove_trailing_lines', 'trim_whitespace']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['importjs', 'prettier'],
+\}
+let g:airline#extensions#ale#enabled = 1
+let g:ale_fix_on_save = 1
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 colorscheme gruvbox " Colorscheme for gruvbox
-setlocal iskeyword+=- " set minus as keyword
+set iskeyword+=- " set minus as keyword
 " Press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 " Highlight current word with F8
@@ -77,9 +89,9 @@ vnoremap <silent> # :<C-U>
 map <C-o> :NERDTreeToggle<CR>
 map <C-b> :CtrlPBuffer<CR>
 "autocmd VimEnter * NERDTree "Open by default NERDTree
-nmap ,n :NERDTreeFind<CR>
+nmap .n :NERDTreeFind<CR>
 let g:ctrlp_working_path_mode = 'wra'
 set backspace=indent,eol,start " allows backspace to work
 
 " transform tabs as spaces
-set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
