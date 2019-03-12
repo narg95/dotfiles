@@ -31,7 +31,6 @@ export KUBE_PS1_LABEL_USE_IMG=true
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 
-
 # Aliases
 
 ## Applications
@@ -44,7 +43,7 @@ alias kcx="kubectx"
 alias aca="argocd app"
 alias ac="argocd"
 alias kpx="k proxy" #kubectl proxy
-alias wk='watch "kubectl get pods,services,configmaps,secrets; kubectl top pod --containers"'
+alias wk='watch "kubectl get pods,services,deployments,configmaps,secrets; kubectl top pod --containers"'
 alias wkw='watch "kubectl get --output=wide pods,services,configmaps,secrets; kubectl top pod --containers"'
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
