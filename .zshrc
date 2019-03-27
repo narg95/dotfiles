@@ -43,8 +43,9 @@ alias kcx="kubectx"
 alias aca="argocd app"
 alias ac="argocd"
 alias kpx="k proxy" #kubectl proxy
-alias wk='watch "kubectl get pods,services,deployments,configmaps,secrets; kubectl top pod --containers"'
-alias wkw='watch "kubectl get --output=wide pods,services,configmaps,secrets; kubectl top pod --containers"'
+alias wk=$'watch "kubectl get pods,services,deployments,configmaps,secrets; kubectl top pod --containers |sort -t \' \' -k 1,2 -b"'
+alias wkw=$'watch "kubectl get --output=wide pods,services,configmaps,secrets; kubectl top pod --containers |sort -t \' \' -k 1,2 -b"'
+alias wkt=$'watch "kubectl top pod --containers |sort -t \' \' -k 1,2 -b"'
 alias catc='pygmentize -g'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
@@ -64,7 +65,7 @@ alias ....=' cd ..; cd ..; cd ..; ls'
 alias cd..='..'
 alias cd...='...'
 alias cd....='....'
-alias -g Gc='| grepc' 
+alias -g Gc='| grepc'
 alias -g G='| grep '
 alias -g P='2>&1 | $PAGER'
 alias -g L='| less'
@@ -82,8 +83,8 @@ alias -s html="$BROWSER"
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias configsync='function _sync_dotfile(){config add $1;config commit -m "add $1";config push;};_sync_dotfile'
 
-function chpwd () { ls } 
-function grepc () { grep --color=always -e $1 -e "$" } 
+function chpwd () { ls }
+function grepc () { grep --color=always -e $1 -e "$" }
 function kpc() {kubectl get pods $1 -o jsonpath='{.spec.containers[*].name}'}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
