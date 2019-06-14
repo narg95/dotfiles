@@ -34,6 +34,10 @@ PROMPT='$(kube_ps1)%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f '
 # Aliases
 
 ## Applications
+alias adbpull="adb pull /sdcard/Android/data/btsnoop_hci.log"
+alias adbdel="adb shell rm /sdcard/Android/data/btsnoop_hci.log"
+alias adbbton="adb shell settings put secure bluetooth_hci_log 1"
+alias adbbtoff="adb shell settings put secure bluetooth_hci_log 0"
 alias dk="docker"
 alias dki="docker images"
 alias dkig="docker images | grep "
@@ -51,6 +55,9 @@ alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC -I macosx --extraintf rc'
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias mif=mediainfo
 alias kz="kustomize"
+alias t="tree"
+alias t1="tree -L 1"
+alias tl="tree -L 2"
 alias cc="code -r"
 alias vzh="vi ~/.zshrc"
 alias k9='kill -9'
