@@ -1,4 +1,4 @@
-syntax on 
+syntax on
 set number
 set nocompatible              " be iMproved, required
 set mouse=a " To scroll and clic with mose. Note that selecting only in visual mode
@@ -31,11 +31,13 @@ Plugin 'ervandew/supertab' " allow autocompletion
 Plugin 'prettier/vim-prettier' " formatting
 Plugin 'mattn/emmet-vim' " emmet plugin  emmet plugin
 Plugin 'w0rp/ale' " linting
+Plugin 'fatih/vim-go'
 
-let b:ale_fixers = ['prettier', 'importjs', 'remove_trailing_lines', 'trim_whitespace']
+let b:ale_fixers = ['eslint', 'importjs', 'remove_trailing_lines', 'trim_whitespace']
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['importjs', 'prettier'],
+\   'javascript': ['importjs', 'eslint'],
+\   'html': ['prettier'],
 \}
 let g:airline#extensions#ale#enabled = 1
 let g:ale_fix_on_save = 1
