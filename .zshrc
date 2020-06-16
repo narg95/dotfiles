@@ -87,6 +87,7 @@ alias -s md=" open"
 alias -s markdown="open"
 alias -s htm="$BROWSER"
 alias -s html="$BROWSER"
+alias gitzip="git archive HEAD -o "
 
 # to sync dot files
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -105,3 +106,4 @@ if [ -f '/Users/nestor/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nestor/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/nestor/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nestor/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH=$PATH:/usr/local/Cellar/node/14.1.0/bin/
